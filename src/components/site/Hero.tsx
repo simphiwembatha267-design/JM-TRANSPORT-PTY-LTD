@@ -17,7 +17,7 @@ export function Hero() {
 
   return (
     <section id="top" ref={ref} className="relative min-h-[100svh] overflow-hidden bg-ink">
-      <motion.div style={{ y }} className="absolute inset-0 -z-10">
+      <motion.div style={{ y }} className="absolute inset-0 z-0">
         <img
           src={heroImg}
           alt="Excavator working on a South African highway widening project at sunset"
@@ -25,11 +25,11 @@ export function Hero() {
           height={1280}
           className="h-[118%] w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/45 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
       </motion.div>
 
-      <div className="mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-end px-6 pb-14 pt-36 md:px-12 md:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-end px-6 pb-14 pt-36 md:px-12 md:pb-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <motion.p
