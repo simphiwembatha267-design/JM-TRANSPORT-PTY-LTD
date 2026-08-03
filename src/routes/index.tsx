@@ -1,24 +1,63 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { About } from "@/components/site/About";
+import { Services } from "@/components/site/Services";
+import { Projects } from "@/components/site/Projects";
+import { Fleet } from "@/components/site/Fleet";
+import { WhyUs } from "@/components/site/WhyUs";
+import { Quote } from "@/components/site/Quote";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "JM Transports Business Solutions | Civil, Plant Hire & Logistics";
+const description =
+  "100% black-owned, Level 1 B-BBEE South African contractor delivering transport, plant hire, earthworks, road construction and civil engineering.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "GeneralContractor",
+            name: "JM Transports Business Solutions (Pty) Ltd",
+            description,
+            areaServed: "ZA",
+            telephone: ["+27659417501", "+27614758761"],
+            email: "Juniormntimande@gmail.com",
+            openingHours: "Mo-Su 00:00-23:59",
+          }),
+        }}
       />
-    </div>
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Services />
+        <Projects />
+        <Fleet />
+        <WhyUs />
+        <Quote />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
